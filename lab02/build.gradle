@@ -1,9 +1,11 @@
 apply plugin: 'java'
 
-jar {
-	manifest{
-		attributes(
-			'Main-Class': 'main.java.csci2020u.lab02.SimpleTest',
-			"Class-Path": configurations.compile.collect { it.getName() }.join(' '))
-	}
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile	group: 'org.apache.commons',
+			name: 'commons-csv',
+			version: '1.8'
 }
