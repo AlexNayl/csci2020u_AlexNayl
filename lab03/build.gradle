@@ -1,0 +1,37 @@
+apply plugin: 'java'
+apply plugin: 'application'
+mainClassName = 'main.java.csci2020u.lab02.CSVDemo'
+
+repositories {
+	mavenCentral()
+}
+
+buildscript {
+	repositories{
+		flatDir dirs: '../proguard6.2.2/lib'
+	}
+	dependencies {
+		classpath ':proguard'
+	}
+}
+
+dependencies {
+	compile	group: 'org.apache.commons',
+			name: 'commons-csv',
+			version: '1.8'
+}
+
+jar{
+	manifest{
+		attributes(
+			'Main-Class': 'main.java.csci2020u.lab02.CSVDemo'
+		)
+	}
+}
+
+task (minify, dependsOn: 'jar', type: proguard.gradle.ProGuardTask){
+	configuration 'proguard.cfg'
+
+	injars 'build/libs/lab02.jar'
+	outjars 'build/libs/lab02.min.jar'
+}
