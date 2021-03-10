@@ -1,0 +1,6 @@
+lab06/Controller.java
+ lab06.Controller
+lab06/Draw.java
+ lab06.Draw
+lab06/Main.java
+ lab06.Main
